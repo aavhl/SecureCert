@@ -17,13 +17,13 @@ def insert_certificate(certificate):
     conn = sqlite3.connect('Certificates.db')
     cursor = conn.cursor()
     cursor.execute("INSERT INTO Certificates VALUES (?,?,?,?,?,?,?,?)",
-                   (cert["credential_id"],
-            cert["name"],
-            cert["designation"],
-            cert["course"],
-            cert["year"],
-            cert["expiry"],
-            cert["hash"]))
+                   (certificate["credential_id"],
+            certificate["name"],
+            certificate["designation"],
+            certificate["course"],
+            certificate["year"],
+            certificate["expiry"],
+            certificate["hash"]))
     conn.commit()
 
 def get_certificate(credential_id):
