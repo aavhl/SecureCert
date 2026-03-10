@@ -1,7 +1,8 @@
-import hashlib
+from MerkleTreeApplication import *
 import sqlite3
 conn = sqlite3.connect('Certificates.db')
 cursor = conn.cursor()
+current_root=None
 cursor.execute("""CREATE TABLE IF NOT EXISTS Certificates(
 certificateID TEXT NOT NULL primary key,
 name text NOT NULL,
@@ -39,3 +40,11 @@ def delete_certificate(credential_id):
     cursor.execute("DELETE FROM Certificates WHERE certificateID = ?",
                    (credential_id,))
     conn.commit()
+def MerkleRoot():
+    global current_root
+    cursor.execute("SELECT hash FROM Certificates")
+    Data = cursor.fetchall()
+    hashes=[r[0] for r in Data]
+    current_root=merkle_tree_create(hashes)
+
+
