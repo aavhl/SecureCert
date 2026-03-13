@@ -1,5 +1,6 @@
 from MerkleTreeApplication import *
 import sqlite3
+
 conn = sqlite3.connect('Certificates.db')
 cursor = conn.cursor()
 current_root=None
