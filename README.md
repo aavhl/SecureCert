@@ -15,7 +15,7 @@ The project is built with:
     SHA-256 hashing
     Merkle Tree integrity verification
 
-Features
+Features:
     Issue new certificates
     Verify certificate authenticity
     Detect tampering via cryptographic hash
