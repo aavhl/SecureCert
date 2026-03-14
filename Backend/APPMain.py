@@ -2,6 +2,7 @@ from flask import Flask, request
 from hash import hash_generation
 from MerkleTreeApplication import merkle_tree_create
 from database import *
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -23,6 +24,11 @@ def input_details():
 
     if expiry == "":
         expiry = None
+    else:
+        try:
+            expiry = datetime.strptime(expiry, "%Y-%m-%d").date()
+        except:
+            return "Invalid date format"
 
     certificate = {
         "credential_id": credential_id,
